@@ -1,30 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
-* {
+/* Home page specific styles - scoped to prevent conflicts */
+.home-page {
+    box-sizing: border-box;
+}
+
+/* Reset only specific elements that need it */
+.home-page .collage-container,
+.home-page .collage-grid,
+.home-page .collage-img,
+.home-page .film-strip,
+.home-page .film-strip-track,
+.home-page .film-strip-image,
+.home-page .collage-sider,
+.home-page .container2,
+.home-page .detail,
+.home-page .collage-center-name {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-body {
-    scrollbar-width: thin;
-    scrollbar-color: transparent red;
-}
-
-.loader {
+/* Loader styles - scoped */
+.home-loader {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-
 }
 
-.loader_body {
+.home-loader_body {
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .request-loader {
@@ -129,51 +138,28 @@ body {
     }
 }
 
-main {
+/* Home page specific main styles */
+.home-page main {
     display: none;
 }
 
-
-/* nav {
-    width: 100%;
-    height: 70px;
-    position: sticky;
-    top: 5px;
-    left: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    
-    background-blend-mode: lighten;
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-} */
-
-.name {
+/* Home page specific name styles */
+.home-page .name {
     padding-top: 30px;
-    letter-spacing: 4px;
-    font-family: fanlste;
-    /* z-index: 1; */
-    line-height: 20px;
+    letter-spacing: 2px;
+    font-family: 'Allura', cursive;
+    line-height: 40px;
     font-size: 70px;
     animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
-.nm{
-    font-family: fanlste;
+
+.home-page .nm {
+    font-family: 'Allura', cursive;
     letter-spacing: 4px;
 }
 
-ul {
-    display: flex;
-    gap: 20px;
-
-}
-
-.container {
-    /* padding-top: 250px; */
+/* Home page specific container styles */
+.home-page .container {
     height: 100vh;
     width: 100%;
     display: flex;
@@ -184,16 +170,12 @@ ul {
     text-align: center;
     font-size: 90px;
     color: #000;
-    font-family: Allura;
+    font-family: 'Allura', cursive;
     background-attachment: fixed;
-    /* text-decoration: underline; */
-    /* background-color: green; */
     animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-
 }
 
-.container2 {
-
+.home-page .container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -201,23 +183,19 @@ ul {
     text-align: center;
     font-size: 90px;
     color: #000;
-    /* color: #fff; */
-    font-family: Allura;
+    font-family: 'Allura', cursive;
     background-attachment: fixed;
-    /* text-decoration: underline; */
-    /* background-color: green; */
     animation: tracking-in-expand 2s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
-
 }
 
-.home {
+.home-page .home {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.film-strip {
+/* Film strip styles */
+.home-page .film-strip {
     --s: 12px;
     --c: #222;
     margin: 10px 0;
@@ -232,11 +210,9 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
-.film-strip-track {
-    /* background: #fff; */
+.home-page .film-strip-track {
     display: flex;
     width: max-content;
     animation: scroll-left 20s linear infinite;
@@ -244,7 +220,7 @@ ul {
     gap: 30px;
 }
 
-.film-strip img {
+.home-page .film-strip img {
     height: 43vh;
     width: auto;
     border-radius: 10px;
@@ -252,7 +228,15 @@ ul {
     border: 4px solid #fff;
 }
 
-.collage-sider {
+.home-page .film-strip-image {
+    height: 43vh;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 4px solid #fff;
+}
+
+.home-page .collage-sider {
     position: absolute;
     top: 0;
     right: 0;
@@ -273,13 +257,12 @@ ul {
     }
 }
 
-.detail {
-    font-family: Allura;
+.home-page .detail {
+    font-family: 'Allura', cursive;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 @keyframes tracking-in-expand {
@@ -297,38 +280,36 @@ ul {
     }
 }
 
+/* Mobile responsive styles for home page */
 @media only screen and (max-width: 600px) {
-    .name {
-
+    .home-page .name {
         font-size: 45px;
         z-index: 1;
         letter-spacing: 10px;
-
     }
 
-    .container {
+    .home-page .container {
         font-size: 40px;
     }
 
-    .collage-container {
-        /* flex-direction: column; */
-        /* width: 100%; */
+    .home-page .collage-container {
         justify-content: center;
         align-items: center;
         padding-top: 30px;
-        min-height: 100vh;
-        width: 100vw;
+        /* min-height: 100vh; */
+        /* width: 100vw; */
     }
-    .collage-sider {
+    
+    .home-page .collage-sider {
         font-size: 60px;
-        top:-45px;
+        top: -45px;
         left: 0px;
-        font-family: Allura;
-        /* position: static; */
+        font-family: 'Allura', cursive;
         transform: none;
         margin-bottom: 10px;
     }
-    .collage-grid-varied {
+    
+    .home-page .collage-grid-varied {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(8, 90px);
         grid-template-areas:
@@ -345,14 +326,16 @@ ul {
         min-width: 0;
         margin: 0 auto;
     }
-    .collage-img {
+    
+    .home-page .collage-img {
         width: 100%;
         height: 90px;
         min-width: 0;
         min-height: 0;
         border-radius: 10px;
     }
-    .container2 {
+    
+    .home-page .container2 {
         font-size: 24px;
         padding: 10px 0;
         width: 100vw;
@@ -360,7 +343,8 @@ ul {
         justify-content: center;
         align-items: center;
     }
-    .detail {
+    
+    .home-page .detail {
         font-size: 24px;
         position: static;
         top: unset;
@@ -374,32 +358,28 @@ ul {
         justify-content: center;
         gap: 0;
     }
-    .name {
+    
+    .home-page .name {
         display: block;
         font-size: 32px;
         margin-bottom: 0px;
         letter-spacing: 6px;
     }
-
-    .detail {
-        /* Hide inline 'photography' text for mobile, use ::after instead */
-    }
 }
 
-.collage-container {
+/* Home page specific collage styles */
+.home-page .collage-container {
     text-align: center;
-    overflow: scroll;
     position: relative;
-    width: 100vw;
-    min-height: 120vh;
+    border-radius: 10px ;
     background: linear-gradient(22deg, #ffffff, #ffffff, #d1d1d1, #ffffff, #d1d1d1, #ffffff, #d1d1d1);
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 60px;
+    padding:10px 0;
 }
 
-.collage-grid {
+.home-page .collage-grid {
     display: grid;
     grid-template-columns: repeat(3, 200px);
     grid-template-rows: repeat(3, 200px);
@@ -408,7 +388,7 @@ ul {
     z-index: 1;
 }
 
-.collage-img {
+.home-page .collage-img {
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -417,19 +397,19 @@ ul {
     transition: opacity 0.7s, filter 0.7s;
 }
 
-.collage-img.center-img {
+.home-page .collage-img.center-img {
     z-index: 2;
     position: relative;
     transition: opacity 0.7s, filter 0.7s;
 }
 
-.collage-img.center-img.hide {
+.home-page .collage-img.center-img.hide {
     opacity: 0;
     filter: blur(10px) grayscale(1);
     pointer-events: none;
 }
 
-.collage-center-name {
+.home-page .collage-center-name {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -440,25 +420,17 @@ ul {
     opacity: 0;
     pointer-events: none;
     z-index: 3;
-    transition: opacity 0.7s, clip-path 1s cubic-bezier(0.77, 0, 0.18, 1);
+    transition: opacity 0.7s, clip-path 1s cubic-bezier(0.77, 0, 0, 0.18, 1);
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     clip-path: inset(0 0 100% 0);
-    /* hidden from bottom */
 }
 
-.collage-center-name.reveal {
+.home-page .collage-center-name.reveal {
     opacity: 1;
     clip-path: inset(0 0 0 0);
-    /* fully revealed */
 }
 
-/* Fade out the center image on scroll */
-body.scrolled .collage-grid img:nth-child(5) {
-    opacity: 0.1;
-    filter: blur(4px);
-}
-
-.collage-grid-varied {
+.home-page .collage-grid-varied {
     display: grid;
     grid-template-areas:
         'a b c d'
@@ -474,7 +446,7 @@ body.scrolled .collage-grid img:nth-child(5) {
     margin: 0 auto;
 }
 
-.collage-grid-varied .collage-img {
+.home-page .collage-grid-varied .collage-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -483,13 +455,13 @@ body.scrolled .collage-grid img:nth-child(5) {
     transition: opacity 0.7s, filter 0.7s, transform 0.7s;
 }
 
-.collage-grid-varied .center-img {
+.home-page .collage-grid-varied .center-img {
     grid-area: e;
     z-index: 2;
 }
 
 @media (max-width: 900px) {
-    .collage-grid-varied {
+    .home-page .collage-grid-varied {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: repeat(7, 100px);
         grid-template-areas:
@@ -502,21 +474,21 @@ body.scrolled .collage-grid img:nth-child(5) {
 }
 
 @media (max-width: 700px) {
-    .collage-grid {
+    .home-page .collage-grid {
         grid-template-columns: repeat(2, 150px);
         grid-template-rows: repeat(5, 150px);
     }
 
-    .collage-img {
+    .home-page .collage-img {
         width: 150px;
         height: 150px;
     }
-    .name{
+    
+    .home-page .name {
         font-size: 3.5rem;
     }
 
-    .collage-center-name {
-        /* overflow: hidden; */
+    .home-page .collage-center-name {
         position: absolute;
         font-size: 100px;
         top: 40%;

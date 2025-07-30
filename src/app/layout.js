@@ -1,11 +1,13 @@
 'use client';
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import { RouterProvider } from "react-router-dom";
-// import router from "../Router/router";
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import Navbar from "@/asset/Navbar";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import Footer from "@/asset/Footer";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,15 +19,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const metadata = {
-  title: "Anibesh Portfolio",
-  description: "Portfolio of Anibesh",
-};
-
 export default function RootLayout({ children }) {
   const pathname = usePathname();
   const isHome = pathname === "/";
   const [showNavbar, setShowNavbar] = useState(!isHome);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isHome) {
@@ -44,13 +46,31 @@ export default function RootLayout({ children }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isHome]);
 
+  useEffect(() => {
+    if (mounted) {
+      AOS.init({ duration: 800, once: true })
+    }
+  }, [mounted])
+
   return (
     <html lang="en">
+      <head>
+        <title>Anibesh Photography Portfolio</title>
+        <meta name="description" content="Professional photography portfolio of Anibesh - capturing moments with artistic vision" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Anibesh Photography Portfolio" />
+        <meta property="og:description" content="Professional photography portfolio of Anibesh - capturing moments with artistic vision" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/image/img1.jpg" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar className={`navbar-animated${showNavbar ? " navbar-visible" : ""}`} />
-        {children}
+        <ErrorBoundary>
+          {mounted && <Navbar className={`navbar-animated${showNavbar ? " navbar-visible" : ""}`} />}
+          {children}
+          {mounted && <Footer />}
+        </ErrorBoundary>
       </body>
     </html>
   );
