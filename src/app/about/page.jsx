@@ -19,8 +19,8 @@ const About = () => {
   const stats = [
     { number: "500+", label: "Happy Clients" },
     { number: "1000+", label: "Photos Captured" },
-    { number: "50+", label: "Weddings" },
-    { number: "5+", label: "Years Experience" }
+    { number: "50+", label: "Events" },
+    { number: "7+", label: "Years Experience" }
   ]
 
   const skills = [
@@ -84,31 +84,39 @@ const About = () => {
 
       {/* Story Section */}
       <div className="py-32 px-4 md:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <motion.div
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-6xl font-light mb-4">My Journey</h2>
+          <div className="w-32 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-8"></div>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            From capturing my first photograph to building a career in visual storytelling
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
           <motion.div
             className="about-card"
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <h2 className="text-6xl font-light mb-8">My Story</h2>
+            <h3 className="text-4xl font-light mb-6 text-yellow-400">The Beginning</h3>
             <div className="space-y-6 text-lg leading-relaxed text-gray-300">
               <p>
-                Photography has been my passion since I first picked up a camera at the age of 15. 
-                What started as a hobby capturing street scenes in my hometown has evolved into a 
-                lifelong journey of artistic expression and storytelling.
+                My love for photography began at the age of 15 when I discovered my father's old film camera 
+                in the attic. That moment changed everything. I spent countless hours experimenting with 
+                light, composition, and the magic of capturing fleeting moments on film.
               </p>
               <p>
-                After studying fine arts and photography at the prestigious School of Visual Arts, 
-                I began my professional career working with some of the most talented photographers 
-                in the industry. This experience shaped my unique approach to capturing moments that 
-                are both visually stunning and emotionally resonant.
-              </p>
-              <p>
-                Today, I specialize in portrait, wedding, and event photography, bringing a blend 
-                of technical expertise and artistic vision to every project. My goal is to create 
-                images that not only document moments but tell stories that will be cherished for 
-                generations to come.
+                Growing up in a small town, I found beauty in the ordinary - the way morning light filtered 
+                through my grandmother's kitchen window, the laughter of children playing in the streets, 
+                and the quiet moments of daily life that often go unnoticed.
               </p>
             </div>
           </motion.div>
@@ -118,18 +126,114 @@ const About = () => {
             initial={{ x: 100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
             <div className="relative h-96 rounded-2xl overflow-hidden">
               <img 
-                src="./image/img2.jpg" 
-                alt="Anibesh at work"
+                src="./image/img1.jpg" 
+                alt="Early photography days"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
             </div>
             <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-6 text-black">
-              <div className="text-3xl font-bold">5+ Years</div>
-              <div className="text-sm">of Experience</div>
+              <div className="text-2xl font-bold">2008</div>
+              <div className="text-sm">First Camera</div>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+          <motion.div
+            className="about-card relative order-2 lg:order-1"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative h-96 rounded-2xl overflow-hidden">
+              <img 
+                src="./image/img3.jpg" 
+                alt="Professional development"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -bottom-6 -right-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-6 text-black">
+              <div className="text-2xl font-bold">2015</div>
+              <div className="text-sm">First Wedding</div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="about-card order-1 lg:order-2"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-4xl font-light mb-6 text-yellow-400">Finding My Path</h3>
+            <div className="space-y-6 text-lg leading-relaxed text-gray-300">
+              <p>
+                After studying fine arts and photography, I began my professional journey working alongside 
+                established photographers. These mentors taught me not just technical skills, but the art 
+                of connecting with people and capturing their authentic moments.
+              </p>
+              <p>
+                My first wedding shoot was a turning point. The raw emotions, the nervous excitement, 
+                and the pure joy of the couple made me realize that photography wasn't just about taking 
+                pictures - it was about preserving memories that would last a lifetime.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            className="about-card"
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <h3 className="text-4xl font-light mb-6 text-yellow-400">Today & Beyond</h3>
+            <div className="space-y-6 text-lg leading-relaxed text-gray-300">
+              <p>
+                Today, I've had the privilege of capturing over 500 weddings, countless portraits, and 
+                numerous events. Each project brings new challenges and opportunities to grow as both 
+                an artist and a storyteller.
+              </p>
+              <p>
+                My approach has evolved to focus on creating authentic, emotion-driven images that tell 
+                the real story of each moment. Whether it's a bride's nervous smile before walking down 
+                the aisle or a family's genuine laughter during a portrait session, I strive to capture 
+                the essence of what makes each person and moment unique.
+              </p>
+              <p>
+                Photography has taught me that beauty exists in every moment, and my mission is to help 
+                others see and preserve that beauty in their own lives.
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="about-card relative"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="relative h-96 rounded-2xl overflow-hidden">
+              <img 
+                src="./image/img6.jpg" 
+                alt="Current work"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-6 text-black">
+              <div className="text-2xl font-bold">2024</div>
+              <div className="text-sm">Still Growing</div>
             </div>
           </motion.div>
         </div>

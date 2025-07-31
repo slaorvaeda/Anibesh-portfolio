@@ -52,12 +52,12 @@ function page() {
             <Hero />
             
             {/* Anibesh Title Section */}
-            <div className="relative  text-white py-20 pb-0 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4">
+            <div className="relative text-white overflow-hidden flex items-center justify-center">
+                <div className="max-w-7xl mx-auto px-4 w-full ">
                     <h1 
                         data-aos="fade-up" 
                         data-aos-delay="300" 
-                        className="text-6xl md:text-9xl lg:text-[18vw] text-center font-bold bg-gradient-to-r from-gray-600 via-gray-100 to-gray-500 bg-clip-text text-transparent font-sans tracking-widest uppercase lg:h-[20vh] h-[6vh]"
+                        className="text-6xl md:text-9xl lg:text-[18vw] text-center font-bold bg-gradient-to-r from-gray-600 via-gray-100 to-gray-500 bg-clip-text text-transparent font-sans tracking-widest uppercase h-[10vh] md:h-[20vh] lg:h-[22vh] xl:h-[25vh] pt-10"
                     >
                         Anibesh
                     </h1>
@@ -186,7 +186,7 @@ function page() {
                         <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center">
                             <motion.button 
                                 className="bg-white text-black px-8 md:px-12 py-3 md:py-4 rounded-full text-base md:text-lg font-medium hover:bg-gray-100 transition-colors"
-                                whileHover={{ scale: 1.05 }}
+                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 Book a Session

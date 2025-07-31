@@ -13,8 +13,10 @@ const Services = () => {
     offset: ["start start", "end end"]
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0])
+  // Fixed opacity transform with proper progression values
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [1, 0.8, 0.6])
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
 
   const services = [
     {
@@ -52,22 +54,30 @@ const Services = () => {
   ]
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top center",
-        end: "bottom center",
-        scrub: 1
+    // Only run GSAP animations if container exists
+    if (containerRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: 1,
+          markers: false // Set to true for debugging
+        }
+      })
+
+      // Check if elements exist before animating
+      const serviceCards = document.querySelectorAll(".service-card")
+      if (serviceCards.length > 0) {
+        tl.fromTo(".service-card", 
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.2 }
+        )
       }
-    })
 
-    tl.fromTo(".service-card", 
-      { y: 100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, stagger: 0.2 }
-    )
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      return () => {
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      }
     }
   }, [])
 
@@ -75,7 +85,7 @@ const Services = () => {
     <div ref={containerRef} className="min-h-screen bg-black text-white overflow-hidden">
       {/* Hero Section */}
       <motion.div 
-        style={{ y, opacity }}
+        style={{ y, opacity, scale }}
         className="relative h-screen flex items-center justify-center overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10"></div>
@@ -116,6 +126,7 @@ const Services = () => {
               initial={{ y: 100, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true, margin: "-100px" }}
             >
               <div className="relative h-96 overflow-hidden rounded-2xl">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10"></div>
@@ -141,6 +152,7 @@ const Services = () => {
                         initial={{ x: -20, opacity: 0 }}
                         whileInView={{ x: 0, opacity: 1 }}
                         transition={{ duration: 0.4, delay: featureIndex * 0.1 }}
+                        viewport={{ once: true }}
                       >
                         <span className="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-3"></span>
                         {feature}
@@ -161,6 +173,7 @@ const Services = () => {
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
             className="text-center mb-20"
           >
             <h2 className="text-6xl md:text-7xl font-light mb-8">How We Work</h2>
@@ -182,6 +195,7 @@ const Services = () => {
                 initial={{ y: 50, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
                 <div className="relative mb-6">
                   <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300">
@@ -207,6 +221,7 @@ const Services = () => {
             initial={{ y: 50, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
             <h2 className="text-6xl md:text-7xl font-light mb-8">Ready to Create Magic?</h2>
             <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
